@@ -10,12 +10,16 @@ function Post() {
                 <div className="d-flex justify-content-center">
                     <form>
                         <div className="mb-3">
-                            <label>Nome Completo</label>
+                            <label>Nome Completo:</label>
                             <input type='text' className="ml-2"/>
                         </div>
                         <div className="mb-3">
-                            <label>E-mail</label>
+                            <label>E-mail:</label>
                             <input type='email' className="ml-2"/>
+                        </div>
+                        <div>
+                            <label>Titulo:</label>
+                            <input type="text" className="ml-2"/>
                         </div>
                         <div className="mb-5">
                             <div>
