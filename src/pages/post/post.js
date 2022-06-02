@@ -1,7 +1,15 @@
 import React from "react";
 import Menu from "../layout/menu/menu";
+import { ADD_USER } from "../../graphql/mutation";
+import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 function Post() {
+
+    const handleSendButton = () => {
+        alert('Enviado')
+    }
+
     return (
         <div>
             <Menu />
@@ -11,21 +19,30 @@ function Post() {
                     <form>
                         <div className="mb-3">
                             <label>Nome Completo:</label>
-                            <input type='text' className="ml-2"/>
+                            <input type='text' className="ml-2" />
                         </div>
                         <div className="mb-3">
                             <label>E-mail:</label>
-                            <input type='email' className="ml-2"/>
+                            <input type='email' className="ml-2" />
                         </div>
                         <div>
                             <label>Titulo:</label>
-                            <input type="text" className="ml-2"/>
+                            <input type="text" className="ml-2" />
                         </div>
                         <div className="mb-5">
                             <div>
                                 <label>Mensagem</label>
                             </div>
                             <textarea cols={50} rows={4} />
+                        </div>
+                        <div className="d-flex justify-content-center">
+                            <button
+                                style={{ width: "150px" }}
+                                onClick={handleSendButton}
+                                className="btn btn-primary font-weight-bold"
+                            >
+                                ENVIAR
+                            </button>
                         </div>
                     </form>
                 </div>
