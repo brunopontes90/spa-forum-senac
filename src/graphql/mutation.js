@@ -6,4 +6,14 @@ mutation AddUsers {
     affected_rows
   }
 }
-`;
+`
+
+
+export const DELETE_USERS = gql `
+mutation DeleteUsers {
+  delete_users(where: {id: {_eq: id}}) {
+    affected_rows
+  }
+}
+
+`

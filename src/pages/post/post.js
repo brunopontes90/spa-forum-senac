@@ -1,15 +1,23 @@
-import React from "react";
-import Menu from "../layout/menu/menu";
-import { ADD_USER } from "../../graphql/mutation";
 import { useMutation } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { ADD_USER } from "../../graphql/mutation";
+import Menu from "../layout/menu/menu";
+import { client } from "../../config/client";
 
 function Post() {
+    const [nome, setNome] = useState("")
+    const [postagem, setPostagem] = useState("")
+    const [email, setEmail] = useState("")
+    const [addUser] = useMutation(ADD_USER, {
+        client,
+        variables: {
+            nomeCompleto: nome,
+            postagem: postagem,
+            email: email,
 
-    const handleSendButton = () => {
-        alert('Enviado')
-    }
-
+        },
+        onCompleted: (data) => console.log(data) 
+    })
     return (
         <div>
             <Menu />
@@ -19,26 +27,23 @@ function Post() {
                     <form>
                         <div className="mb-3">
                             <label>Nome Completo:</label>
-                            <input type='text' className="ml-2" />
+                            <input type='text' className="ml-2" onChange={(event) => setNome(event.target.value)}/>
                         </div>
                         <div className="mb-3">
                             <label>E-mail:</label>
-                            <input type='email' className="ml-2" />
-                        </div>
-                        <div>
-                            <label>Titulo:</label>
-                            <input type="text" className="ml-2" />
+                            <input type='email' className="ml-2" onChange={(event) => setEmail(event.target.value)} />
                         </div>
                         <div className="mb-5">
                             <div>
                                 <label>Mensagem</label>
                             </div>
-                            <textarea cols={50} rows={4} />
+                            <textarea cols={50} rows={4} onChange={(event) => setPostagem(event.target.value)} />
                         </div>
                         <div className="d-flex justify-content-center">
                             <button
                                 style={{ width: "150px" }}
-                                onClick={handleSendButton}
+                                type="submit"
+                                onClick={() => addUser}
                                 className="btn btn-primary font-weight-bold"
                             >
                                 ENVIAR
