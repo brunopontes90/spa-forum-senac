@@ -5,7 +5,6 @@ import { client } from './config/client';
 import Menu from './pages/layout/menu/menu';
 import { GET_USERS } from './graphql/query';
 import { EditOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
 import { Link } from "react-router-dom";
 
 function App() {
