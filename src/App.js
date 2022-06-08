@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 import './App.css';
 import { client } from './config/client';
@@ -14,6 +14,17 @@ function App() {
     client,
     onCompleted: (data) => setIsClientPost(data.users)
   });
+
+  const handleTimeAndData = (getDate) => {
+    const date = new Date(getDate);
+    const day = date.getDay();
+    const month = date.getMonth() + 2;
+    const year = date.getFullYear();
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
+
+    return `${day}/${month}/${year} - ${hour}:${minutes}`;
+  }
 
   return (
     <div>
@@ -31,7 +42,7 @@ function App() {
           </span>
           <p className='h5'>{user.postagem}</p>
           <p className='h6'>{user.email}</p>
-          <p className='h6'>{user.created_at}</p>
+          <p className='h6'>{handleTimeAndData(user.created_at)}</p>
         </div>
       ))}
     </div>

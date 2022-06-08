@@ -5,18 +5,18 @@ import Menu from "../layout/menu/menu";
 import { client } from "../../config/client";
 
 function Post() {
-    const [nome, setNome] = useState("")
-    const [postagem, setPostagem] = useState("")
+    const [name, setName] = useState("")
+    const [post, setPost] = useState("")
     const [email, setEmail] = useState("")
     const [addUser] = useMutation(ADD_USER, {
         client,
         variables: {
-            nomeCompleto: nome,
-            postagem: postagem,
+            nomeCompleto: name,
+            postagem: post,
             email: email,
 
         },
-        onCompleted: (data) => console.log(data) 
+        onCompleted: (data) => console.log(data)
     });
 
     return (
@@ -28,7 +28,7 @@ function Post() {
                     <form>
                         <div className="mb-3">
                             <label>Nome Completo:</label>
-                            <input type='text' className="ml-2" onChange={(event) => setNome(event.target.value)}/>
+                            <input type='text' className="ml-2" onChange={(event) => setName(event.target.value)} />
                         </div>
                         <div className="mb-3">
                             <label>E-mail:</label>
@@ -38,7 +38,7 @@ function Post() {
                             <div>
                                 <label>Mensagem</label>
                             </div>
-                            <textarea cols={50} rows={4} onChange={(event) => setPostagem(event.target.value)} />
+                            <textarea cols={50} rows={4} onChange={(event) => setPost(event.target.value)} />
                         </div>
                         <div className="d-flex justify-content-center">
                             <button
