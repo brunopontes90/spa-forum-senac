@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { ADD_USER } from "../../graphql/mutation";
+import { UPDATE_POST } from "../../graphql/mutation";
 import Menu from "../layout/menu/menu";
 import { client } from "../../config/client";
 import { GET_USERS } from "../../graphql/query";
@@ -12,7 +13,7 @@ function Edit() {
         client,
         onCompleted: (data) => setEditClientPost(data.users)
     });
-    
+
     return (
         <div>
             <Menu />

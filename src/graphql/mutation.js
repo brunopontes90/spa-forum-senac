@@ -17,3 +17,11 @@ mutation DeleteUsers {
 }
 
 `
+
+export const UPDATE_POST = gql `
+mutation updatePost {
+  update_users(where: {nomeCompleto: {_eq: "nomeCompleto"}, email: {_eq: "email"}, postagem: {_eq: "postagem"}}) {
+    affected_rows
+  }
+}
+`
