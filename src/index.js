@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import App from './App';
 import Post from './pages/post/post';
 import Edit from './pages/edit/edit';
+import "antd/dist/antd.css";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDom.render(

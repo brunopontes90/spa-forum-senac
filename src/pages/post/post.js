@@ -17,7 +17,8 @@ function Post() {
 
         },
         onCompleted: (data) => console.log(data) 
-    })
+    });
+
     return (
         <div>
             <Menu />
