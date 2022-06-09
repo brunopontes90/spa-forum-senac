@@ -5,9 +5,15 @@ import { UPDATE_POST } from "../../graphql/mutation";
 import Menu from "../layout/menu/menu";
 import { client } from "../../config/client";
 import { GET_USERS } from "../../graphql/query";
+import { useNavigate } from "react-router-dom";
 
 function Edit() {
     const [editClientPost, setEditClientPost] = useState([]);
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/")
+    }
 
     useQuery(GET_USERS, {
         client,
@@ -24,23 +30,44 @@ function Edit() {
                         <form key={index++}>
                             <div className="mb-3">
                                 <label>Nome Completo:</label>
-                                <input type='text' className="ml-2" value={editPost.nomeCompleto} onChange={(event) => setEditClientPost(event.target.value)} />
+                                <input
+                                    type='text'
+                                    className="ml-2"
+                                    value={editPost.nomeCompleto}
+                                    onChange={(event) => setEditClientPost(event.target.value)}
+                                />
                             </div>
                             <div className="mb-3">
                                 <label>E-mail:</label>
-                                <input type='email' className="ml-2" value={editPost.email} onChange={(event) => setEditClientPost(event.target.value)} />
+                                <input
+                                    type='email'
+                                    className="ml-2"
+                                    value={editPost.email}
+                                    onChange={(event) => setEditClientPost(event.target.value)}
+                                />
                             </div>
                             <div className="mb-5">
                                 <div>
                                     <label>Mensagem</label>
                                 </div>
-                                <textarea cols={50} rows={4} value={editPost.postagem} onChange={(event) => setEditClientPost(event.target.value)} />
+                                <textarea
+                                    cols={50}
+                                    rows={4}
+                                    value={editPost.postagem}
+                                    onChange={(event) => setEditClientPost(event.target.value)}
+                                />
                             </div>
                             <div className="d-flex justify-content-center">
                                 <button
+                                    onClick={handleClick}
+                                    className="btn btn-secondary"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    type={"submit"}
                                     style={{ width: "150px" }}
-                                    type="submit"
-                                    className="btn btn-primary font-weight-bold"
+                                    className="btn btn-primary ml-2 font-weight-bold"
                                 >
                                     ENVIAR
                                 </button>
